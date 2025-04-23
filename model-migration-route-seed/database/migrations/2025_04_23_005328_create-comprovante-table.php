@@ -15,9 +15,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->float('horas');
             $table->string('atividade');
-            $table->unsignedBigInteger('categoria_id');
-            $table->unsignedBigInteger('aluno_id');
-            $table->unsignedBigInteger('user_id');
+
 
             $table->foreignId('categoria_id')->references('id')->on('categorias')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('aluno_id')->references('id')->on('alunos')->onDelete('cascade')->onUpdate('cascade');

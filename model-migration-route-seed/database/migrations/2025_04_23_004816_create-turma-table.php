@@ -11,19 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('declaracoes', function (Blueprint $table) {
+        Schema::create('turmas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('hash');
-            $table->dateTime('data');
+            $table->integer('ano');
 
-            $table->foreignId('aluno_id')->constrained()
+            $table->foreignId('curso_id')->constrained()
             ->onDelete('cascade')
             ->onUpdate('cascade');
-            $table->foreignId('comprovante_id')->constrained()
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
+
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -32,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('declaracoes');
+        Schema::dropIfExists('turmas');
     }
 };

@@ -16,8 +16,6 @@ return new class extends Migration
             $table->string('nome');
             $table->string('sigla');
             $table->float('total_horas');
-            $table->unsignedBigInteger('nivel_id');
-            $table->unsignedBigInteger('eixo_id');
             $table->softDeletes();
             $table->foreignId('nivel_id')->references('id')->on('niveis')->onDelete('cascade');
             $table->foreignId('eixo_id')->constrained()->onDelete('cascade')->onUpdate('cascade');

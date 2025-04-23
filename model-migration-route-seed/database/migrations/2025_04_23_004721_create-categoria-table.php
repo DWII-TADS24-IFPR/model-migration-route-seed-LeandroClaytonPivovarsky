@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id()->primary()->autoIncrement();
             $table->string('nome');
             $table->float('maximo_horas');
-            $table->unsignedBigInteger('curso_id');
             $table->timestamps();
+           
             $table->foreignId('curso_id')
             ->references('id')
             ->on('cursos')

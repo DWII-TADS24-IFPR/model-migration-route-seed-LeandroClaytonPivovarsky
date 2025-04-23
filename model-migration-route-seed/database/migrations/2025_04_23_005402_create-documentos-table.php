@@ -11,10 +11,27 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('documentos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            
+            $table->string('url');
+            $table->string('descricao');
+            $table->float('horas_in');
+            $table->string('status');
+            $table->string('comentario');
+            $table->float('horas_out');
+
+            $table->softDeletes();
             $table->timestamps();
+
+            $table->foreignId('categoria_id')
+            ->constrained()
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+
+            $table->foreignId('user_id')
+            ->constrained()
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
         });
     }
 
@@ -23,6 +40,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('documentos');
     }
 };
